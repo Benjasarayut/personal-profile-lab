@@ -40,7 +40,6 @@ function ProfileCard({ profile }) {
     );
   };
 
-  // เดิมเป็น alert -> เปลี่ยนเป็นเปิดฟอร์ม (Challenge 3)
   const handleContactClick = (e) => {
     e.stopPropagation();
     setShowContactForm((v) => !v);
@@ -48,7 +47,6 @@ function ProfileCard({ profile }) {
 
   const handleSkillClick = (e, skill) => {
     e.stopPropagation();
-    // เดโมอินเตอร์แอคชันเล็ก ๆ (จะไม่เด้ง view counter)
     alert(`${profile.name} มีความเชี่ยวชาญใน ${skill}!`);
   };
 
@@ -65,7 +63,6 @@ function ProfileCard({ profile }) {
     e.stopPropagation();
     if (!validateForm()) return;
 
-    // จำลองการส่งข้อความ
     alert(
       `ส่งข้อความถึง ${profile.name} สำเร็จ!\nจาก: ${form.fromName}\nข้อความ: ${form.message}\n(ระบบเดโม)`
     );
@@ -76,7 +73,7 @@ function ProfileCard({ profile }) {
 
   return (
     <div className={cardClassName} onClick={handleCardClick}>
-      {/* View counter (มุมซ้ายบน) */}
+      {/* View counter */}
       <div className="view-counter" aria-label="View counter">
         👁️ Views: {viewCount}
       </div>
@@ -87,11 +84,31 @@ function ProfileCard({ profile }) {
           {themeEmoji}
         </button>
 
-        <div className="profile-avatar" aria-hidden="true">
-          {getInitials(profile.name)}
+        <div className="profile-avatar">
+          {profile.avatar ? (
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                objectFit: 'cover'
+              }}
+            />
+          ) : (
+            getInitials(profile.name)
+          )}
         </div>
+
         <h1 className="profile-name">{profile.name}</h1>
         <div className="student-id">{profile.studentId}</div>
+        {profile.university && (
+  <div className="student-id" style={{ marginTop: 8 }}>
+    {profile.university}
+  </div>
+)}
+
       </div>
 
       {/* Basic info */}
@@ -228,10 +245,19 @@ function ProfileCard({ profile }) {
             </label>
 
             <div className="contact-actions">
-              <button type="button" className="btn-secondary" onClick={(e) => { e.stopPropagation(); setShowContactForm(false); }}>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowContactForm(false);
+                }}
+              >
                 ยกเลิก
               </button>
-              <button type="submit" className="btn-primary">ส่งข้อความ</button>
+              <button type="submit" className="btn-primary">
+                ส่งข้อความ
+              </button>
             </div>
             <p className="contact-note">* เดโม: ยังไม่ส่งอีเมลจริง</p>
           </form>

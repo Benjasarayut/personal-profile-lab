@@ -1,23 +1,25 @@
 import React from 'react';
 import ProfileCard from './ProfileCard.jsx';
 
+
 function App() {
   // ✅ ตัวอย่างข้อมูลจริง ใช้งานได้ทันที — แก้เป็นข้อมูลของตัวเองได้
   const myProfile = {
-    name: "สมชาย ใจดี",
-    studentId: "66130500001",
+    name: "เบญจศรายุทธ น้อยอุบล",
+    studentId: "67543210071-6",
+    university: "มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา",
     major: "วิศวกรรมซอฟต์แวร์",
-    year: 3,
+    year: 2,
     age: 21,
     gpa: 3.75,
     email: "somchai.jaidee@student.university.ac.th",
-    hobbies: ["เขียนโค้ด", "เล่นเกม", "ดูหนัง", "ฟังเพลง", "อ่านหนังสือ"],
+    hobbies: ["เขียนโค้ด", "เล่นเกม", "ดูหนัง", "ฟังเพลง", "เดินทาง", "ถ่ายภาพ", "ขับรถเล่น"],
     skills: ["JavaScript", "React.js", "HTML/CSS", "Python", "Git", "Node.js"],
     socialLinks: [
       { platform: "GitHub", url: "https://github.com/Benjasarayut" },
-      { platform: "LinkedIn", url: "https://linkedin.com/in/yourusername" },
-      { platform: "Instagram", url: "https://instagram.com/yourusername" },
+      { platform: "outlook", url: "https://linkedin.com/in/yourusername" },
     ],
+    avatar: "/518335105_1280048433677664_8999837264086943833_n.jpg"
   };
 
   return (
